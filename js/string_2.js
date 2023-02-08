@@ -17,6 +17,7 @@
 // for (var i = 1; i < 6; i++) {
 //     timer();
 // }
+let z =5;
 
 for (var i = 1; i < 6; i++) {
     setTimeout(function () {
