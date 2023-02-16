@@ -35,7 +35,7 @@ const das1 = function () {
 }
 das1();
 
-function cloisure(str) {
+function cloisure1(str) {
     let hi = 'Hi';
     let hello = 'hello';
     function sayHi() {
@@ -44,23 +44,43 @@ function cloisure(str) {
     function sayhello() {
         console.log(hello);
     }
-    if (str == 'hi') return sayHi();
-    return sayhello();
+    if (str == 'hi') return sayHi;
+    return sayhello;
 }
-
-let funcInside = cloisure('HELLO');
+let funcInside = cloisure1('hello');
 funcInside();
+
+function cloisure2(){
+    count = 0;
+    let func = () =>{
+        count++;
+        console.log(count);
+    }
+    return func;
+}
+let first = cloisure2(); 
+first(); first(); // in ra 2 lần gọi
+let first2 = cloisure2();
+first2(); // in ra 1 lần gọi
+
+
 
 function showName(fName, lName) {
     let nameIntro = "Your name is ";
+    //! C1
     function makeFullName() {
         nameIntro = 'gggg'
         return nameIntro + fName + " " + lName;
     }
-    return makeFullName();
+    return makeFullName;
+    //! C2
+    // return function makeFullName() {
+    //     nameIntro = 'gggg'
+    //     return nameIntro + fName + " " + lName;
+    // }
 }
 let zz13 = showName('dad', 'adad');
-console.log(zz13);
+console.log(zz13());
 
 
 
@@ -350,7 +370,8 @@ const list2 = list.map((value, index) => {
         return value;
     }
 });
-console.log('list2', list2);
+console.log('list2', list2);// mảng mới thay đổi
+console.log('list', list); // mảng cũ y nguyên
 
 const list3 = list.map(function (value, index) {
     if (index % 2 == 0) {
@@ -495,6 +516,31 @@ function timestamp(time) {
 }
 
 // timestamp(30);
+
+//! counting time
+function secondsToHms1(d) {
+    d = Number(d);
+    let h = Math.floor(d / (60 * 60));
+    let m = Math.floor(d % (60 * 60) / 60);
+    let s = Math.floor(d % (60 * 60) % 60);
+    let hDisplay = h == 1 ? `0${h} hour ` : `0${h}`.slice(-2)+` hours `;
+    let mDisplay = m == 1 ? `0${m} minute ` : `0${m}`.slice(-2)+` minutes `;
+    let sDisplay = s == 1 ? `0${s} second ` : `0${s}`.slice(-2)+` seconds `;
+    return hDisplay + mDisplay + sDisplay;
+}
+
+function countDown1(gio, phut, giay) {
+    let time = (gio * 3600 + phut * 60 + giay); // milliseconds
+    const zz = setInterval(() => {
+        let count = time--;
+        if (count > 0) console.log(secondsToHms1(count));
+        else {
+            clearTimeout(zz);
+            console.log("het gio");
+        };
+    }, 1000);
+}
+// countDown1(2, 0, 5);
 
 function test() {
     return 5;
@@ -741,7 +787,7 @@ function myInfo({ name, age, info }) {
     console.log(name, age, info);
 }
 
-// {} [] null ===object
+// {} [] null === object
 const zzzzz = (object) => {
     if (!Array.isArray(object) && object !== null && typeof object === 'object') {
         return true;
@@ -764,12 +810,12 @@ const eqee = {
 console.log(Object.entries(eqee));// [['a',1],['b',2]]
 
 const qeqe = (obj) => {
-    return Object.keys(obj).map(val=> [val,obj[val]]);
+    return Object.keys(obj).map(val => [val, obj[val]]);
 }
 console.log(qeqe(eqee)); // [['a',1],['b',2]]
 
-const ter= [1,3,4,5,7,6].map(x=> {
-    if(x%2==0) return[x,'sochan'];
+const ter = [1, 3, 4, 5, 7, 6].map(x => {
+    if (x % 2 == 0) return [x, 'sochan'];
     else return x;
 });
 console.log('ter', ter);
@@ -788,17 +834,31 @@ console.log(qeqe1(eqee));// [['a',1],['b',2]]
 console.log();
 let zzzr = (obj, ...keyDel) => {
     let objj = JSON.parse(JSON.stringify(obj));
-    keyDel.forEach(key=>delete objj[key]);
+    keyDel.forEach(key => delete objj[key]);
     console.log(obj);
     return objj;
 }
-console.log('zzzr', zzzr({ 'a': 1, 'b': 2,'c':3 }, 'b','a'));
+console.log('zzzr', zzzr({ 'a': 1, 'b': 2, 'c': 3 }, 'b', 'a'));
 
 //!.every()
-const sochan = [2,4,6].every((val,x)=>x+2 % 2); 
+const sochan = [2, 4, 6].every((val, x) => x + 2 % 2);
 console.log('sochan', sochan)
 //! any()
-const cosole = [1,2,3].some(x=>x%2); //true
+const cosole = [1, 2, 3].some(x => x % 2); //true
 console.log('cosole', cosole)
 
+//! copy chac chan
+const  a43434 = {
+    'num1': 1,
+    'info': {
+        'name':27,
+    },
+    'num3':3
+};
+const copy = JSON.parse(JSON.stringify(a43434));
+copy.info.name = 26 ;
+console.log(copy);
+console.log(a);
+
 //! DOM
+
