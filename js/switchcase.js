@@ -58,10 +58,12 @@ function cloisure2(){
     }
     return func;
 }
+
 let first = cloisure2(); 
-first(); first(); // in ra 2 lần gọi
+first(); 
 let first2 = cloisure2();
-first2(); // in ra 1 lần gọi
+first(); // in ra 1 lần gọi
+first2(); // in ra 2 lần gọi
 
 
 
@@ -70,19 +72,12 @@ function showName(fName, lName) {
     //! C1
     function makeFullName() {
         nameIntro = 'gggg'
-        return nameIntro + fName + " " + lName;
+        return nameIntro +" "+ fName + " " + lName;
     }
     return makeFullName;
-    //! C2
-    // return function makeFullName() {
-    //     nameIntro = 'gggg'
-    //     return nameIntro + fName + " " + lName;
-    // }
 }
 let zz13 = showName('dad', 'adad');
 console.log(zz13());
-
-
 
 function cloisure(message) {
     return function hiyourname(name) {
@@ -275,7 +270,7 @@ function haha() {
     let now = Date.now(); // timestamp 
     let time = new Date(2023, 0, 18, 0, 00, 00); // timestampw  d
     let someMillisecondValue = (now - time) / 1000;
-    return function calc() {
+    function calc() {
         let d = Number(someMillisecondValue);
         let time = d / (365 * 24 * 60 * 60);
         if (Math.floor(time) > 0) {
@@ -313,7 +308,9 @@ function haha() {
             return;
         }
     }
+    return calc;
 }
+
 let zb = haha();
 zb();
 
@@ -336,11 +333,16 @@ arr1.unshift('090');
 
 // splice insert array
 let arrz = ['as', 'db', 'cd'];
-arrz.splice(0, 2, 5, 6, 7, 8, 9);
+let tit= [];
+tit= arrz.splice(0, 2, 5, 6, 7, 8, 9);
 console.log('arrz', arrz); // 5 6 7 8 9 cd
 
-arr1.splice(5, 0, 'a', 'a', 'a', 'a', 'a');
 console.log(arr1);
+let z12 =[];
+z12 = arr1.splice(5, 0, 'a', 'a', 'a', 'a', 'a');
+
+console.log(z12);
+
 let random = [99, 3, 1, -5, 7, -6, -20];
 console.log('random', random.sort());
 
@@ -350,8 +352,6 @@ const random2 = random.sort((a, b) => {
 });
 console.log(random2);
 
-const random1 = random.sort((a, b) => a > b ? 1 : -1);//giảm dần
-console.log(random1);
 
 let str = x => x > 2 && x < 10;
 const res = random.find(str);
@@ -362,7 +362,6 @@ console.log('array map');
 const list = [1, 2, 3, 41, 456, 7, 88];
 // trả ra 1 mảng mới các số trong mảng cũ gấp đôi
 const list2 = list.map((value, index) => {
-
     if (index % 2 == 0) {
         return value * 2;
     }
@@ -370,6 +369,10 @@ const list2 = list.map((value, index) => {
         return value;
     }
 });
+const listcopy = list.slice();
+listcopy.map(x=>x*2);
+console.log('listcopy', listcopy)
+console.log('-----------------------------');
 console.log('list2', list2);// mảng mới thay đổi
 console.log('list', list); // mảng cũ y nguyên
 
@@ -558,11 +561,13 @@ const [q, e, w, r] = eqe;
 console.log(q, e, w, r);// a, b, c,d
 // rest parameters
 const [z1, ...gggd] = demo;
-console.log(`z: ${z1},gggd: ${gggd}`); // a ,b,c,d,e 
+console.log(`z: ${z1},gggd: ${gggd}, ${typeof gggd}`); // a ,b,c,d,e 
+console.log(gggd);
 
 function demo15(a, ...z) {
     console.log(a);
     console.log(z);
+    console.log(typeof z);
 }
 demo15(0, 2, 3, 4, 'a'); // 0,  [2,3,4,'a']
 

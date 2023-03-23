@@ -199,7 +199,7 @@ span1.parentNode.removeChild(span1);
 //! nextElementSibling: tìm tới phần tử kế tiếp và previousElementsibling: tìm tới phần tử đứng trước
 const span2 = document.querySelector(".span2");
 console.log(span2.nextElementSibling);
-console.log(span2.previousElementSibling.getAttribute("href"));
+console.log(span2.previousElementSibling);
 
 //! childNodes : trả về 1 mảng Nodelist hết node bên trong
 //! children : trả về 1 mảng các thẻ bên trong ko bao gồm textNodes
@@ -221,7 +221,7 @@ console.log(span2.firstElementChild);
 
 //! lastChild vs lastElementChild
 const h4div = document.querySelector(".newh4");
-//@ console.log(h4div.lastChild);
+console.log(h4div.lastChild); //#text
 console.log(h4div.lastElementChild);
 
 //! nextSibling và previousSibling
@@ -229,7 +229,7 @@ console.log(document.querySelector(".span11").nextSibling);//#text
 console.log(document.querySelector(".span11").previousSibling); // #text
 
 //! sự khác nhau HTMLCOLLECTION vs NODELIST
-//! giống nhau :  mảng, chỉ dùng được foreach
+//! giống nhau :  mảng
 //! khác : 
 //!        htmlcollect ko dùng được foreach
 //!        nodelist dùng được foreach
@@ -238,7 +238,7 @@ const htmlcollection = document.getElementsByTagName("li");
 console.log('htmlcollection', htmlcollection)
 const nodelist = document.querySelectorAll("li");
 console.log('nodelist', nodelist)
-nodelist.forEach(item=>item.classList.add("text-sky-400"));
+nodelist.forEach(item => item.classList.add("text-sky-400"));
 
 
 //! parentNode parentElement
@@ -246,4 +246,21 @@ nodelist.forEach(item=>item.classList.add("text-sky-400"));
 const html = document.querySelector("html");
 console.log(html.parentNode); // #document
 console.log(html.parentElement);// null
-//! insetBefore replaceChild
+
+//! insertBefore
+const insertbefore = document.querySelector(".insert-before");
+document.body.insertBefore(insertbefore, document.querySelector(".insert"));
+
+
+//!  replaceChild
+//! node.replaceChild(newNode, oldNode);
+//! thay cái boxed = span 
+const span = document.createElement("span");
+span.textContent = "replaceChild";
+document.body.replaceChild(span, document.querySelector(".boxed"));
+
+//! convert HTML collection, Nodelist to Array
+const li = document.getElementsByTagName("span");
+[...li].forEach(item => console.log(item));
+
+
