@@ -76,8 +76,8 @@ body {
     cursor: pointer;
     box-shadow: rgba(249, 2, 2, 0.2) 0px 7px 29px 0px;
     display: flex;
-    justify-content:space-between;
-    align-items: center;;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .accordion-header * {

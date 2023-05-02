@@ -64,11 +64,6 @@ body {
     line-height: 1;
 }
 
-.content img {
-    display: block;
-    margin-bottom: 30px;
-}
-
 .content {
     max-width: 1024px;
     padding: 50px 25px;
@@ -79,12 +74,12 @@ body {
 }
 
 .content p {
-    margin-bottom: 130px;
+    margin-bottom: 20px;
 }
 
 .content img {
     display: block;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
 
 .lightbox {
@@ -94,7 +89,7 @@ body {
     right: 0;
     bottom: 0;
     z-index: 999999;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(247, 7, 7, 0.75);
     display: flex;
     justify-content: center;
     align-items: center;

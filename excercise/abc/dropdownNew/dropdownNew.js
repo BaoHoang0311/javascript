@@ -28,6 +28,7 @@ function handlefunction1(e) {
 document.addEventListener('click', handlefunction2);
 
 function handlefunction2(e) {
+    console.log(e.target);
     if(!e.target.classList.contains('dropdown__select')){
         const dropdown__list = document.querySelector('.dropdown__list');
         dropdown__list.classList.remove('show');

@@ -1,3 +1,56 @@
+let z1 = [
+    {
+        "value": 1,
+        "name": "Afghanistan"
+    },
+    {
+        "value": 2,
+        "name": "Albania"
+    },
+    {
+        "value": 3,
+        "name": "Algeria"
+    },
+    {
+        "value": 4,
+        "name": "Andorra"
+    },
+    {
+        "value": 5,
+        "name": "Angola"
+    }
+];
+
+let c = z1.map(x => {
+    return { 'abc': x.name }
+});
+console.log('c', c);
+let de = [
+    "Afghanistan",
+    "Albania",
+    "Algeria",
+    "Andorra",
+    "Angola",
+    "Anguilla"
+];
+
+let d = {
+    Id: "6",
+    MetaDescription: "t",
+    MetaKeyword: "t",
+    MetaTitle: "t",
+    ProjectFID: "1",
+}
+let app =[]
+Object.keys(d).forEach(function (item){
+    app.push(`ProjectSEO.${item}`,d[item]);
+});
+console.log(app);
+
+for (var key in d) {
+    console.log(key);
+}
+
 let a = [
     {
         "month": 12,
@@ -300,6 +353,20 @@ let a = [
         "netValue": 0
     }
 ];
-let b =[];
-a.forEach(x=> b.push({name: x.month+x.year, value1: x.grossValue,value2: x.netValue}));
+let b = [];
+b = a.map(x => {
+    return {
+        "name" : x.month + x.year, 
+        "grossValue": x.grossValue ,
+        "netValue": x.netValue ,
+    };
+});
 console.log(b);
+
+const list = [1,2,3];
+const list2 = list.map(x=>x*2);
+console.log(list2);
+console.log(list);
+
+let z = [1,2,3,4];
+console.log(z);

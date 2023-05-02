@@ -1,3 +1,6 @@
+//! blur: từ trong ra ngoài DOM
+//! capture: từ ngoài vào trong DOM 
+
 //! event click
 const button = document.querySelector('.click');
 

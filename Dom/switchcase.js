@@ -245,7 +245,7 @@ console.log(timeSince(new Date(2021, 9, 26)));
 // };
 
 let now1 = Date.now();
-let time = new Date(2023, 0, 18, 0, 00, 00);
+let time = new Date(2023, 0, 18, 0, 0, 0);
 let someMillisecondValue = now1 - time;
 
 //! tính gio phut giay chinh xac
@@ -268,7 +268,7 @@ console.log(secondsToHms(someMillisecondValue / 1000));
 
 function haha() {
     let now = Date.now(); // timestamp 
-    let time = new Date(2023, 0, 18, 0, 00, 00); // timestampw  d
+    let time = new Date(2023, 0, 18, 0, 0, 0); // timestampw  d
     let someMillisecondValue = (now - time) / 1000;
     function calc() {
         let d = Number(someMillisecondValue);
@@ -372,8 +372,7 @@ const list2 = list.map((value, index) => {
 const listcopy = list.slice();
 listcopy.map(x=>x*2);
 console.log('listcopy', listcopy)
-console.log('-----------------------------');
-console.log('list2', list2);// mảng mới thay đổi
+console.log('list2', list2);// mảng mới
 console.log('list', list); // mảng cũ y nguyên
 
 const list3 = list.map(function (value, index) {

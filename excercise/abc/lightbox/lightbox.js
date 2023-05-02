@@ -27,13 +27,16 @@ document.body.addEventListener('click', function (e) {
     e.stopImmediatePropagation();
     const Image = document.querySelector('.lightbox-image');
     if (Image == null) return;
+
     const srcImage = Image.getAttribute('src');
-    let idx = [...img].findIndex(x => x.getAttribute('src') === srcImage);
+    let idx = [...img].findIndex(x =>  x.getAttribute('src') === srcImage);
     const lightbox = document.querySelector('.lightbox');
+
     if (e.target.classList.contains('lightbox')) {
         lightbox.parentElement.removeChild(lightbox);
     }
-    else if (e.target.classList.contains('fa')) {
+    
+    if (e.target.classList.contains('fa')) {
         lightbox.parentElement.removeChild(lightbox);
         if (e.target.classList.contains('fa-angle-right')) {
             document.body.insertAdjacentHTML('beforeend', temp(img[idx == img.length - 1 ? 0 : ++idx].getAttribute('src')));
@@ -42,10 +45,4 @@ document.body.addEventListener('click', function (e) {
             document.body.insertAdjacentHTML('beforeend', temp(img[idx = idx == 0 ? 0 : --idx].getAttribute('src')));
         }
     }
-    console.log('vvaodaytruoc');
-})
-
-
-document.body.addEventListener('click', function (e) {
-    console.log('hello');
 })
