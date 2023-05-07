@@ -14,5 +14,3 @@ function handlefunction(e) {
         else item.classList.add("active");
     });
 }
-// 1 2 3   4
-// B C B C B C  B C B C B C  

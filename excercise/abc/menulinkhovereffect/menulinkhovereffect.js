@@ -16,6 +16,5 @@ window.addEventListener('load', function () {
     function handleoverlink1(event) {
         console.log(event.target);
         line.style.width = `0px`;
-
     }
 })

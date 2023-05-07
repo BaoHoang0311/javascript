@@ -2,40 +2,66 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Drop Down New</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
-    <link rel="stylesheet" href="./style.css" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drop Down New</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
-    <div class="dropdown">
-        <div class="dropdown__select">
-          <span class="dropdown__selected">Call to action</span>
-          <i class="fa fa-caret-down dropdown__caret"></i>
-        </div>
-        <ul class="dropdown__list">
-          <li class="dropdown__item">
-            <span class="dropdown__text">New project</span>
-            <i class="fa fa-plus-circle dropdown__icon"></i>
-          </li>
-          <li class="dropdown__item">
-            <span class="dropdown__text">View profile</span>
-            <i class="fa fa-user dropdown__icon"></i>
-          </li>
-          <li class="dropdown__item">
-            <span class="dropdown__text">Settings</span>
-            <i class="fa fa-cog dropdown__icon"></i>
-          </li>
-          <li class="dropdown__item">
-            <span class="dropdown__text">Logout</span>
-            <i class="fa fa-circle dropdown__icon"></i>
-          </li>
-        </ul>
-      </div>
-    <script src="./dropdownNew.js"></script>
+  <div class="dropdown">
+    <div class="dropdown__select">
+      <span class="dropdown__selected">Call to action</span>
+      <i class="fa fa-caret-down dropdown__caret"></i>
+    </div>
+    <ul class="dropdown__list">
+      <li class="dropdown__item">
+        <span class="dropdown__text">New project</span>
+        <i class="fa fa-plus-circle dropdown__icon"></i>
+      </li>
+      <li class="dropdown__item">
+        <span class="dropdown__text">View profile</span>
+        <i class="fa fa-user dropdown__icon"></i>
+      </li>
+      <li class="dropdown__item">
+        <span class="dropdown__text">Settings</span>
+        <i class="fa fa-cog dropdown__icon"></i>
+      </li>
+      <li class="dropdown__item">
+        <span class="dropdown__text">Logout</span>
+        <i class="fa fa-circle dropdown__icon"></i>
+      </li>
+    </ul>
+  </div>
+
+  <div class="test1">
+    <div class="test1__select">
+      <span class="test1__selected">Click 1</span>
+      <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
+    </div>
+    <div class="test1__select">
+      <span class="test1__selected">Click 2</span>
+      <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
+    </div>
+  </div>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
+  <script>
+    let test1_selected = document.querySelectorAll(".test1__select");
+    [...test1_selected].forEach(x => x.addEventListener('click', ham1))
+    
+    function ham1(e){
+      console.log(e.target);
+      if(!e.target.contain){
+
+      }
+    }
+  </script>
+
+  <!-- <script src="./dropdownNew.js"></script> -->
 </body>
 
 </html>
