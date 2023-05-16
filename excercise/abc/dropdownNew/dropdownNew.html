@@ -39,24 +39,40 @@
   </div>
 
   <div class="test1">
-    <div class="test1__select">
+    <div class="test1__select" style="display: inline-block;">
       <span class="test1__selected">Click 1</span>
+
       <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
     </div>
-    <div class="test1__select">
+    <div class="test1__select" style="display: inline-block;">
       <span class="test1__selected">Click 2</span>
       <!-- <i class="fa fa-caret-down dropdown__caret"></i> -->
     </div>
   </div>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script> -->
   <script>
+
     let test1_selected = document.querySelectorAll(".test1__select");
     [...test1_selected].forEach(x => x.addEventListener('click', ham1))
-    
-    function ham1(e){
-      console.log(e.target);
-      if(!e.target.contain){
 
+    function insertAfter(referenceNode, newNode) {
+      referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+    }
+    var el = document.createElement("i");
+    
+    function ham1(e) {
+      console.log(e.target);
+      console.log(e.target.nextElementSibling);
+      if (e.target.nextElementSibling == null) {
+        el.classList = "fa fa-caret-down test1_caret";
+        insertAfter(e.target, el);
+      }
+      else {
+        console.log('vao day');
+        console.log(e.target.nextElementSibling.classList);
+        let icon = document.querySelector('.test1_caret');
+
+        icon.classList.toggle('fa-caret-down');
+        icon.classList.toggle('fa-caret-up');
       }
     }
   </script>
