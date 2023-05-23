@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+
+</head>
+
+<body>
+    <input type="password" id="password" />
+    <i id="eyes" class="fa-regular fa-eye-slash"></i>
+    <script>
+        const eyes = document.querySelector("#eyes");
+        eyes.addEventListener('click', function(e){
+            const password = document.querySelector('#password');
+            if(password.type == 'text'){
+                password.setAttribute('type','password');
+                eyes.classList.remove("fa-solid", "fa-eye");
+                eyes.classList.add("fa-regular","fa-eye-slash");
+            }
+            else {
+                password.setAttribute('type','text');
+                eyes.classList.remove("fa-regular", "fa-eye-slash");
+                eyes.classList.add("fa-solid","fa-eye");
+            } 
+        })
+    </script>
+</body>
+
+</html>

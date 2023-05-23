@@ -16,6 +16,7 @@ const divBody = document.body;
 //     </div>
 // </div>`
 
+// afterbegin beforebegin afterend beforend
 
 // divBody.insertAdjacentHTML("afterbegin",template);
 // const z1 = document.querySelector(".modal");

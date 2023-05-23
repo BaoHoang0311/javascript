@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="dropdown">
+        <input type="text" class="input-search" />
+        <div class="dropdown-list">
+            <div class="dropdown-item">How to learn English</div>
+            <div class="dropdown-item">The best way to learn youtube</div>
+            <div class="dropdown-item">Five ways to study css</div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener("load", function () {
+            const input = document.querySelector(".input-search");
+            const items = document.querySelectorAll(".dropdown-item");
+            input.addEventListener("input", handleHighlight);
+
+            function handleHighlight(e) {
+                filter = e.target.value.toLowerCase();
+                [...items].forEach((item) => {
+                    const text = item.textContent.toLowerCase();
+                    const index = text.indexOf(filter);
+                    if (index >= 0 && text[index].startsWith(filter.charAt(0))) {
+                        item.innerHTML = `${item.textContent.substring(0, index)}<span style="color:red">${item.textContent.substring(index, index + filter.length)}</span>${item.textContent.substring(index + filter.length)}`;
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

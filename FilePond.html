@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet"
+        href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/filepond/dist/filepond.min.css">
+</head>
+
+<body>
+    <input type="file" class="filepond" name="aavbc" multiple data-max-file-size="20MB" data-max-files="3" />
+    <script src="https://unpkg.com/filepond-plugin-file-encode/dist/filepond-plugin-file-encode.min.js"></script>
+    <script
+        src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.min.js"></script>
+    <script
+        src="https://unpkg.com/filepond-plugin-image-exif-orientation/dist/filepond-plugin-image-exif-orientation.min.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.js"></script>
+    <script src="https://unpkg.com/filepond/dist/filepond.min.js"></script>
+    <script
+        src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+
+    <script>
+        FilePond.registerPlugin(
+            FilePondPluginImagePreview,
+            FilePondPluginImageExifOrientation,
+            FilePondPluginFileValidateSize,
+            FilePondPluginFileValidateType,
+            // previews dropped images
+            FilePondPluginImagePreview
+        );
+
+        // Select the file input and use 
+        // create() to turn it into a pond
+        const pond = FilePond.create(document.querySelector('input'),
+            {
+                acceptedFileTypes: ['image/*'],
+            }
+        );
+        pond.setOptions({
+            allowDrop: true,
+            allowReplace: false,
+            instantUpload: false,
+            labelFileProcessing: "đánh nhau không",
+            labelInvalidField: "Sai file",
+            labelFileProcessingComplete: "mày cút",
+            //Hook
+            beforeAddFile: function(item){
+                console.log(item);
+            },
+            // callback
+            oninit: function(){
+                console.log("oninit")
+            }
+        });
+        // pond.beforeAddFile(item){
+        //     console.log("dasda");
+        // }
+    </script>
+</body>
+
+</html>

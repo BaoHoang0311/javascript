@@ -29,9 +29,7 @@ input.addEventListener('keydown',function(event) {
 
 })
 //! keyup : khi nhấn nút thả ra
-
-//! keypress: khi nhấn xuống, có preventDefault,
-//! ko nhận mấy nút tào lao như enter delete mũi tên page up 
+//! keypress: khi nhấn xuống, có preventDefault,ko nhận mấy nút tào lao như enter delete mũi tên page up 
 //! esc, page down
 //! keydown -> keypress-> keyup
 

@@ -195,24 +195,18 @@ console.log(s);
 //     alert('hello world');
 // }, 5000);
 // clearTimeout(adz);
+
 // const zzz1 = setInterval(function () {
 //     console.log(`hello lololo`);
 // }, 100000);
 // clearInterval(zzz1);
 
-// function getAge (year){
-//     if (typeof year !== 'number') return 'nhap dung dinh dang nam';
-//     const yearNow = new Date().getFullYear();
-//     return yearNow - year;
-// }
-// console.log('getAge', getAge(lol));
-
 // function countDown(time) {
-//     let count = 0;
+//     let count = time;
 //     const z1 = setInterval(() => {
-//         count++;
 //         console.log(count);
-//         if (count === time) {
+//         count--;
+//         if (count === 0) {
 //             console.log(`time out`);
 //             clearInterval(z1);
 //         }
@@ -227,22 +221,26 @@ function timeSince(timec) {
 }
 console.log(timeSince(new Date(2021, 9, 26)));
 
-// function timestampq(time) {
-//     let now = Date.now();
-//     let ngay = 0;
-//     let gio = 0;
-//     let phut = 0;
-//     let giay = 0;
+// function timekhuyenmai(tgkm){
 //     const z1 = setInterval(() => {
-//         let tinhtoan = now - time;
+
+//         let now =  Date.now();
+
+//         let someMillisecondValue = (tgkm - now) / 1000;
 //         //! tính giay
-//         if (tinhtoan / (1000 * 60) >= 60) {
-//             phut++;
-//             giay = tinhtoan - 60;
-//         }
-//         console.log(`phut`, Math.trunc(tinhtoan / (1000 * 60)));
+//         let ngay = someMillisecondValue / (24 * 3600);
+//         kq = `${Math.trunc(ngay)} ngay `;
+//         let gio =  someMillisecondValue % (24 * 3600) / 3600;
+//         kq += `${Math.trunc(gio)} gio `;
+//         let phut =  someMillisecondValue % (24 * 3600) % 3600 / 60;
+//         kq += `${Math.trunc(phut)} phut `;
+//         let giay =  someMillisecondValue % (24 * 3600) % 3600 % 60;
+//         kq += `${Math.trunc(giay)} giay `;
+//         console.log(kq);
 //     },1000)
-// };
+// }
+
+// timekhuyenmai(new Date(2023,4,24,0,0,0));
 
 let now1 = Date.now();
 let time = new Date(2023, 0, 18, 0, 0, 0);
@@ -713,9 +711,11 @@ const user4 = { ...user3 };
 user4.school.name = 'Bách khoa tphcm';
 console.log(user4);
 console.log(user3);
+
 // copy 1 object phức tạp
 // clone
 const user5 = JSON.parse(JSON.stringify(user4));
+
 user5.school.name = 'khoa hoc tu nhien tphcm';
 console.log('user5', user5);
 
@@ -738,11 +738,12 @@ student23.hi();
 console.log(Object.keys(student23));
 let student25 = { ...student23 };
 student25.name = 'zzz';
+
 //! nếu ở ngoài thì không bị thay đổi, nhưng student25.fullname.name bị thay đổi
 console.log('student25', student25);
 console.log('student23', student23);
-//! nhưng student25.fullname.name bị thay đổi
 
+//! nhưng student25.fullname.name bị thay đổi
 student25.fullname.name = "zzzzzzz";
 console.log('student25', student25);
 console.log('student23', student23);

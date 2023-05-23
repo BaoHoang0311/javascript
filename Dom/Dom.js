@@ -159,7 +159,7 @@ console.log(document.querySelector('body').hasChildNodes());
 //! 1.insertAdjacentText("position","text");
 // beforebegin
 // <h3>
-//    afterend
+//    afterbegin
 //  <span></span>
 //    beforeend
 // </h3>
