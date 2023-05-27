@@ -1,3 +1,4 @@
 {
-    "turboConsoleLog.insertEnclosingFunction": true
+    "turboConsoleLog.insertEnclosingFunction": true,
+    "editor.mouseWheelZoom": true
 }

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="tab">
+        <div class="tab-list">
+            <div class="tab-item active">Home</div>
+            <div class="tab-item">Popular</div>
+            <div class="tab-item">Hot</div>
+            <div class="tab-item">Author</div>
+            <div class="tab-item">Blog</div>
+            <div class="tab-item">Latest post</div>
+            <div class="tab-item">Trending</div>
+            <div class="tab-item">News</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Idol</div>
+        </div>
+    </div>
+    <script>
+        window.addEventListener("load", function(){
+            const tabItems = document.querySelectorAll(".tab-item");
+            const tabList= document.querySelector(".tab-list");
+            const tab = document.querySelector(".tab");
+            const tabOffsetleft = tab.offsetLeft;
+            [...tabItems].forEach(x=> x.addEventListener("click",handleTabClick));
+            function handleTabClick(e){
+                [...tabItems].forEach((item) => item.classList.remove("active"));
+                e.target.classList.add("active");
+                tabList.scroll(e.target.offsetLeft /2,0);
+            }
+        })
+    </script>
+</body>
+
+</html>
