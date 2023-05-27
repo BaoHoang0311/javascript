@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        #gridDemo {
+            background: gray;
+            width: 600px;
+            height: 200px;
+            /* height given for illustration */
+            display: flex;
+            flex-flow: row wrap;
+            position: relative;
+        }
+
+        .items {
+            background: blue;
+            margin: 4px;
+            flex: 0 1 calc(20% - 8px);
+            border: 1px solid red;
+            /* <-- adjusting for margin */
+        }
+    </style>
+    <div id="gridDemo" class="col">
+        <!--
+     --><!--
+     -->
+        <div class="items">Item 1</div>
+        <div class="items">Item 3</div><!--
+     -->
+        <div class="items">Item 2</div>
+        <div class="items">Item 4</div><!--
+     -->
+        <div class="items">Item 5</div><!--
+     -->
+        <div class="items">Item 6</div><!--
+     -->
+        <div class="items">Item 7</div><!--
+     -->
+        <div class="items">Item 8</div><!--
+     -->
+        <div class="items">Item 9</div><!--
+     -->
+        <div class="items">Item 10</div><!--
+     -->
+        <div class="items">Item 11</div><!--
+     -->
+        <div class="items">Item 12</div><!--
+     -->
+        <div class="items">Item 13</div><!--
+     -->
+        <div class="items">Item 14</div><!--
+     -->
+        <div class="items">Item 15</div><!--
+     -->
+        <div class="items">Item 16</div><!--
+     -->
+        <div class="items">Item 17</div><!--
+     -->
+        <div class="items">Item 18</div><!--
+     -->
+        <div class="items">Item 19</div><!--
+     -->
+        <div class="items">Item 20</div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script>
+        Sortable.create(gridDemo, {
+            animation: 150
+        });
+
+    </script>
+</body>
+
+</html>

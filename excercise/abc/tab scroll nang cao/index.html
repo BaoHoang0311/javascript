@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Tab scroll addsadasdavanced</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+    <div class="tab">
+        <i class="fa fa-angle-left tab-prev disabled"></i>
+        <div class="tab-list">
+            <div class="tab-item active">Home</div>
+            <div class="tab-item">Popular</div>
+            <div class="tab-item">Hot</div>
+            <div class="tab-item">Author</div>
+            <div class="tab-item">Blog</div>
+            <div class="tab-item">Latest post</div>
+            <div class="tab-item">Trending</div>
+            <div class="tab-item">News</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Popular</div>
+            <div class="tab-item">Hot</div>
+            <div class="tab-item">Author</div>
+            <div class="tab-item">Blog</div>
+            <div class="tab-item">Latest post</div>
+            <div class="tab-item">Trending</div>
+            <div class="tab-item">News</div>
+            <div class="tab-item">Idol</div>
+            <div class="tab-item">Popular</div>
+            <div class="tab-item">Hot</div>
+            <div class="tab-item">Author</div>
+            <div class="tab-item">Blog</div>
+            <div class="tab-item">Latest post</div>
+            <div class="tab-item">Trending</div>
+            <div class="tab-item">News</div>
+            <div class="tab-item">Idol</div>
+        </div>
+        <i class="fa fa-angle-right tab-next"></i>
+    </div>
+    <script>
+        window.addEventListener("load", function () {
+            const tabItems = document.querySelectorAll(".tab-item");
+            const tabList = document.querySelector(".tab-list");
+            const tab = document.querySelector(".tab");
+            const tab_next = document.querySelector(".tab-next");
+            const tab_prev = document.querySelector(".tab-prev");
+
+            let abc = 200;
+
+            [...tabItems].forEach(x => x.addEventListener("click", handleTabClick));
+            function handleTabClick(e) {
+                [...tabItems].forEach((item) => item.classList.remove("active"));
+                e.target.classList.add("active");
+                tabList.scroll(e.target.offsetLeft, 0);
+            }
+            tabList.addEventListener("wheel", function(e){
+                e.preventDefault();
+                const delta = e.deltaY;
+                this.scrollLeft += delta;
+                console.log("tabList.addEventListener ~ scrollLeft:",  this.scrollLeft)
+                if(this.scrollLeft > 0){
+                    tab_prev.classList.remove('disabled');
+                }
+                ///                                     1390
+                if( document.querySelector(".tab-list").scrollWidth - document.querySelector(".tab-list").clientWidth  <= this.scrollLeft + abc){
+                    tab_next.classList.add('disabled');
+                }
+                if(this.scrollLeft - abc <= 0){
+                    tab_prev.classList.add('disabled');
+                    tab_next.classList.remove('disabled');
+                }
+                if( document.querySelector(".tab-list").scrollWidth - document.querySelector(".tab-list").clientWidth  > this.scrollLeft + abc){
+                    tab_next.classList.remove('disabled');
+                }
+            })
+            tab_next.addEventListener("click", function(e){
+                e.preventDefault();
+                tabList.scrollLeft += abc;
+                tab_prev.classList.remove('disabled');
+                if( document.querySelector(".tab-list").scrollWidth - document.querySelector(".tab-list").clientWidth  <= Math.round(document.querySelector(".tab-list").scrollLeft) + abc ) {
+                    tab_next.classList.add('disabled');
+                }
+            })
+            tab_prev.addEventListener("click", function(e){
+                e.preventDefault();
+                tab_next.classList.remove('disabled');
+                tabList.scrollLeft -= abc;
+                if(tabList.scrollLeft - abc <= 0){
+                    tab_prev.classList.add('disabled');
+                }
+            })
+        })  
+    </script>
+</body>
+
+</html>

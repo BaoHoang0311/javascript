@@ -3,7 +3,6 @@ const accordionheader = document.querySelectorAll(".accordion-header");
 [...accordionheader].forEach(item => item.addEventListener('click', function (e) {
     const next = item.nextElementSibling;
     const content = e.target.nextElementSibling;
-    // scrollheight : bao gồm padding
     content.style.height = `${content.scrollHeight}px`;
     if (e.target.nextElementSibling.classList.contains('is-active')) content.style.height = `0px`;
     next.classList.toggle('is-active');
@@ -23,3 +22,4 @@ document.addEventListener('click', function (e) {
         });
     }
 });
+//abc
