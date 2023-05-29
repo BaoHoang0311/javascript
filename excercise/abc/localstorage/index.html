@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../localstorage/app.css">
+    <title>localstorage</title>
+</head>
+
+<body>
+    <div class="todo">
+        <form class="todo-form" autocomplete="off">
+            <input type="text" name="todo" placeholder="Enter your task" class="todo-input" />
+            <button class="todo-submit" type="submit">Add</button>
+        </form>
+        <div class="todo-list">
+            <!-- <div class="todo-item">
+            <span class="todo-text">Learning english</span>
+            <i class="fa fa-trash todo-remove" data-value="Learning english"></i>
+          </div> -->
+        </div>
+    </div>
+
+    <script>
+        function additem(str) {
+            const todo_item = `
+                <div class="todo-item">
+                    <span class="todo-text">${str}</span>
+                    <i class="fa fa-trash todo-remove" data-value="${str}"></i>
+                </div>`
+            return todo_item;
+        }
+
+        window.addEventListener("load", function () {
+            console.log("ad");
+            let data = localStorage.getItem('todolist');
+            let datalist = JSON.parse(data) ?? [];
+
+            const form = document.querySelector(".todo-form");
+            const todo_list = document.querySelector(".todo-list");
+
+            if (datalist != null && datalist.length > 0) {
+                datalist.forEach(element => {
+                    todo_list.insertAdjacentHTML("afterbegin", additem(element));
+                });
+            }
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const todoValue = this.elements['todo'].value;
+                datalist.push(todoValue);
+                localStorage.setItem("todolist", JSON.stringify(datalist));
+                todo_list.insertAdjacentHTML("afterbegin", additem(todoValue));
+            });
+
+            const btnRemove = document.querySelectorAll(".todo-remove");
+            console.log("btnRemove:", btnRemove);
+
+            // Handle remove todo
+            todo_list.addEventListener("click", function (e) {
+                if (e.target.matches(".todo-remove")) {
+                    e.preventDefault();
+                    let value = e.target.getAttribute("data-value");
+                    let z = datalist.findIndex(x => x == value);
+                    console.log(z);
+                    datalist.splice(z,1);
+                    localStorage.setItem("todolist", JSON.stringify(datalist));
+
+                    todo_list.replaceChildren();
+                    datalist.forEach(element => {
+                        todo_list.insertAdjacentHTML("afterbegin", additem(element));
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
