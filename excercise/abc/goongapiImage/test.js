@@ -4,19 +4,6 @@ const link = `https://rsapi.goong.io/staticmap/route?origin=20.981971,105.864323
 
 const link2 =`https://rsapi.goong.io/Direction?origin=21.046623224000029,105.790168203000060&destination=21.046666732000062,105.790169569000060&vehicle=car&api_key=${YOUR_API_KEY}`
 
-// async function getUsers() {
-//     fetch(link)
-//     .then(function (data) {
-//         $('#progress').text("Loading");
-//         return data.blob();
-//     })
-//     .then(function (img) {
-//         var dd = URL.createObjectURL(img);
-//         $('#progress').text("");
-//         $('img').attr('src', dd);
-//     })
-// }
-
 async function getUsers() {
     fetch(link)
     .then(response=>  response.blob())
