@@ -4,7 +4,7 @@ function timekhuyenmai(tgkm){
         let now =  Date.now();
 
         let someMillisecondValue = (tgkm - now) / 1000;
-        //! tính giay
+        //! tính giay //
         let ngay = someMillisecondValue / (24 * 3600);
         kq = `${Math.trunc(ngay)} ngay `;
         let gio =  someMillisecondValue % (24 * 3600) / 3600;
