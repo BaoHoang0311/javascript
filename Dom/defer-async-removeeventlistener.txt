@@ -1,0 +1,12 @@
+defer : non-blocking-page đợi dom load xong nó load hoặc theo thứ tự tao muốn
+async : load độc lập ko quan tâm ví dụ: nhúng cái script analytic của thằng google vào
+remove-event listener
+
+onclick : thì chỉ đăng ký cho nó 1 function thôi
+addEventListener : thì đăng ký nhiêu cũng được
+buble : chạy từ trong ra ngoài , capture : chạy từ ngoài vào trong
+
+button.addEventListener("click", handleClick2, {
+    // chỉ chạy 1 lần duy nhất
+    once: true,
+});

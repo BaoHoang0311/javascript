@@ -1,17 +1,14 @@
 // {
 //     "workbench.colorCustomizations": {
-//         "tab.activeBorderTop": "#ff0000",
-//         "tab.activeBorder": "#ff0000",
-//         "list.activeSelectionBackground": "#00337C",
 //         "list.inactiveSelectionBackground": "#00337C",
-//         "tab.unfocusedActiveBorder": "#000000"
+//         "tab.activeBorder": "#fc0000",
+//         "tab.activeBorderTop": "#fc0000",
 //     },
-//     "tabnine.experimentalAutoImports": true,
 //     "workbench.colorTheme": "Default Dark+",
-//     "files.autoSave": "afterDelay",
-//     "workbench.editor.enablePreview": false,
 //     "workbench.iconTheme": "vscode-icons",
-//     "turboConsoleLog.logMessagePrefix": "",
-//     "turboConsoleLog.includeFileNameAndLineNum": false,
 //     "editor.mouseWheelZoom": true,
+//     "liveServer.settings.donotShowInfoMsg": true,
+//     "liveServer.settings.donotVerifyTags": true,
+//     "editor.rename.enablePreview": false,
+//     "workbench.editor.enablePreview": false
 // }
