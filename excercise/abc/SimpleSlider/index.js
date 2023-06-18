@@ -31,12 +31,11 @@ window.addEventListener('load', function () {
     let idxCount = 0;
     slidernext.addEventListener('click', function () {
         [...slideritem].forEach(x => x.removeAttribute('style'));
-        idxCount = handleABC(idxCount);
-        Object.assign(slideritem[idxCount].style, custom_style);
+        Object.assign(slideritem[handleABC(prev = 'tang')].style, custom_style);
         customdot();
     })
 
-    function handleABC(idxCount,prev = 'tang') {
+    function handleABC(prev = 'tang') {
         if (prev == 'tang') {
             if (idxCount == img.length-1) {
                 idxCount = 0;
@@ -61,8 +60,7 @@ window.addEventListener('load', function () {
     }
     sliderprev.addEventListener('click', function () {
         [...slideritem].forEach(x => x.removeAttribute('style'));
-        idxCount = handleABC(idxCount,prev='giam');
-        Object.assign(slideritem[idxCount].style, custom_style);
+        Object.assign(slideritem[handleABC(prev="das")].style, custom_style);
         customdot()
     })
 })

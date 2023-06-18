@@ -295,3 +295,16 @@ console.log(window.innerWidth);
 console.log(boxed.getBoundingClientRect());
 
 //! focus and blur
+
+// remove element match in object
+let cardsArray = [
+    {
+        name: "fire",
+        img: "img/fire.png",
+    },
+    {
+        name: "youtube",
+        img: "img/youtube.png",
+    },]
+cardsArray.filter(x => x.name === 'burger').forEach(x => cardsArray.splice(cardsArray.indexOf(x), 1));
+
