@@ -2,6 +2,5 @@
 // Window.pageXOffset = khoảng cách theo chiều ngang tới phía bên trái
 
 
-// scrollHeight = trả về chiều cao của element bao gồm padding,
-không có border
-//scrollWidth : trả về chiều rộng của padding không có border
+// scrollHeight = trả về chiều cao của element bao gồm padding, không có border
+// scrollWidth : trả về chiều rộng của padding không có border

@@ -867,3 +867,36 @@ console.log(a);
 
 //! DOM
 
+const data = new Map([
+    [
+        "tab1",
+        {
+            url: "index.html#react",
+            content:
+                "React is a JavaScript library for building user interfaces.",
+        },
+    ],
+    [
+        "tab2",
+        {
+            url: "index.html#vue",
+            content: "Vue is the Progressive JavaScript Framework.",
+        },
+    ],
+    [
+        "tab3",
+        {
+            url: "index.html#angular",
+            content:
+                "Angular is a platform for building mobile and desktop web applications.",
+        },
+    ],
+]);
+const hashes = new Map([
+    ["#react", "tab1"],
+    ["#vue", "tab2"],
+    ["#angular", "tab3"],
+]);
+//https://www.javascripttutorial.net/sample/webapis/history/index.html#react
+                        // react
+const tabId = hashes.get(window.location.hash);

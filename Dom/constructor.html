@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructor</title>
+</head>
+
+<body>
+    <button class="button">click</button>
+    <script>
+
+        // function contructor
+        function Student(name, age) {
+            // this = {}
+            this.name = name;
+            this.age = age;
+            this.getname = function () {
+                return `c1 ur name ${this.name}`;
+            }
+            // return this;
+        }
+        let student2 = new Student("bao", 27);
+        console.log(student2);
+        console.log(student2.getname());
+
+        function Girl(name, age) {
+            this.name = name;
+            this.age = age;
+            this.GetPrototype = this.CookPrototype();
+        }
+
+        Girl.prototype.CookPrototype = function () {
+            return "girl can cook prototype";
+        }
+        Girl.prototype.test = function () {
+            console.log('11');
+        }
+        Girl.prototype.CookPrototype_WitharrFunction = () => {
+            return `girl: ${this.name} age: ${this.age} can cook`;
+        }
+
+        Girl.prototype.CookPrototype_WithFunction = function () {
+            return `girl: ${this.name} age: ${this.age} can cook`;
+        }
+
+        let girl = new Girl("bao", "18");
+        console.log(girl.CookPrototype());
+        console.log(girl.GetPrototype);
+        girl.test();
+        console.log(girl.CookPrototype_WithFunction()); // 
+        console.log(girl.CookPrototype_WitharrFunction()); // girl:  age: undefined can cook
+
+        // 1. Bind
+        const student = {
+            firstName: "tran",
+            lastName: "anh tuan",
+            fullName: function () {
+                console.log(`${this.firstName} ${this.lastName}`);
+            }
+        }
+
+        const selector = document.querySelector.bind(document);
+        const selectors = document.querySelectorAll.bind(document);
+        function selector1(str) {
+            document.querySelector(str);
+        }
+        console.log(selector(".button"));
+        // this là trước dấu chấm cho dễ nhớ
+        selector(".button").addEventListener("click", student.fullName.bind(student));
+
+        function log(level, time, message) {
+            console.log(`${level}-${time}-${message}`);
+        }
+        // trong function ko dùng this nên truyền là null
+        const logErrToday1 = log.bind(null, "Error", "today");
+        logErrToday1("day la tin nhan");
+
+        function ghilog() {
+            console.log.apply(console, arguments);
+        }
+        ghilog(1, 2);
+
+        function Animal(name, weight) {
+            this.name = name;
+            this.weight = weight;
+        }
+        function Cat() {
+            Animal.call(this, 'cat', 50);
+        }
+        Cat.prototype.say = function () {
+            console.log(`I am ${this.name}, my weight is ${this.weight}`);
+        }
+        let d = new Cat();
+        d.say();
+
+        const cogai = {
+            tien_tk: 10,
+            unit: 'USD'
+        }
+
+        const changtrai = {
+            tien_tk:100000,
+            unit: 'USD'
+        }
+
+        function goShopping(item, quantity, price) {
+            const totalCost = price * quantity;
+            if (this.tien_tk < totalCost) {
+                console.log(`Not enough money to buy the product!`);
+            } else {
+                console.log(`Girl went shopping and bought ${quantity} ${item} for ${totalCost} ${this.unit}`)
+            }
+        }
+        //                    item , quantity, price
+        goShopping.call(cogai, 'shoes', 2, 100);
+
+        let fnGoShopping = goShopping.bind(changtrai);
+        fnGoShopping('shoes', 3, 100);
+    </script>
+</body>
+
+</html>

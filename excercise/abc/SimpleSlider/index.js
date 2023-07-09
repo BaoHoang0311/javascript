@@ -4,7 +4,6 @@ window.addEventListener('load', function () {
     const sliderprev = document.querySelector('.slider-prev');
     const slidernext = document.querySelector('.slider-next');
     const slideritem = document.querySelectorAll('.slider-item');
-    const slidermain = document.querySelectorAll('.slider-main');
 
     const ul = document.querySelector('.slider-dots');
     const custom_style = {
@@ -15,12 +14,14 @@ window.addEventListener('load', function () {
     Object.assign(document.querySelector('.slider-main :nth-child(1)').style, custom_style);
 
     let idx = 0;
+
     [...img].forEach(x => {
         var li = document.createElement("li");
         li.classList.add("slider-dot-item");
         li.setAttribute("data-index", idx++);
         ul.append(li);
     });
+
     const sliderdotitem = this.document.querySelectorAll('.slider-dot-item');
     [...sliderdotitem].forEach(x => {
         if (x.getAttribute('data-index') == 0) {

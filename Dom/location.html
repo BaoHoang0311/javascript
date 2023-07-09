@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Location-Url</title>
+</head>
+
+<body>
+    <style>
+        body {
+            height: 500vh;
+        }
+    </style>
+    <script>
+        // location check url
+        // http://127.0.0.1:5500/Dom/location.html?type=2&demo=5
+        // trong F12 có thể gõ luôn location
+        let params = new URLSearchParams(location.search);
+        console.log(params);
+        console.log(params.get('type'));
+        console.log(params.get('demo'));
+        console.log(params.keys());
+        for (const value of params.keys()) {
+            console.log(`${value}`);
+        }
+        for (const value of params.values()) {
+            console.log(`${value}`);
+        }
+        // History
+        console.log(window.history);
+        // history.back(); // lui trang
+        // history.forward(); // chạy tới trang
+
+        // Navigator check thiết bị
+        console.log(window.navigator.userAgent);
+        const deviceType = () => {
+            const ua = navigator.userAgent;
+            if (/(tablet| ipad | playbook | silk) | (android (?!.*mobi))/i.test(ua)) {
+                return "tablet";
+            } else if (
+                /Mobile |Android | ip(hone|od) | IEMobile | BlackBerry|  Kindle | Silk-Accelerated | (hpw|web) OS|Opera M(obil|ini)/.test(ua))
+            {
+                return "mobile";
+            }
+            return "desktop";
+         };
+         console.log(deviceType());
+         const dapso = (a,b) =>{
+            return a+b;
+         }
+         console.log(dapso(5,7));
+    </script>
+</body>
+
+</html>
