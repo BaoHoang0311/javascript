@@ -28,7 +28,7 @@ window.addEventListener("load", function () {
     }
     const slider = new Slider();
 
-    function abc(){
+    function abc(e){
         console.log(this);
         [...this.dotItems].forEach((el) => el.classList.remove("active"));
         e.target.classList.add("active");

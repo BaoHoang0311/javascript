@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Callback</title>
+</head>
+
+<body>
+    <script>
+        // promise giải quyết callback hell
+        /**
+         * new Promise(resolve, reject)
+         * status : pending
+         * status : resolve
+         * status : reject
+         **/
+
+        /**
+         * then(onfullfiled , rejected) : truyền vào 2 argument (2 callback)
+         **/
+
+        function makePromise(buyIphone) {
+            let promise = new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    if (buyIphone) {
+                        resolve("oh yeah i will buy iphone-111");
+                    }
+                    else {
+                        reject("oh, no i dont buy iphone-111");
+                    }
+                }, 5000)
+            });
+            return promise;
+        }
+
+        // let haveIphone = makePromise(true);
+        // haveIphone.then((success)=>console.log(success))
+        //                 .catch((error)=>console.log(error))
+        //                 .finally(() => {
+        //                      console.log("I'm still happy");
+        //                  });
+        // kq oh yeah i will buy iphone-111
+
+        // new Promise(function (resolve, reject) {
+        //     setTimeout(() => {
+        //         resolve("1. run the first time");
+        //     }, 3000);
+        // }).then((data) => {
+        //     console.log(data); // 1. run the first time
+        //     return new Promise(function (resolve, reject) {
+        //         setTimeout(() => {
+        //             resolve("2. run the second time");
+        //         }, 3000);
+        //     });
+        // }).then((data) => {
+        //     console.log(data); // 2. run the second time
+        //     return new Promise(function (resolve, reject) {
+        //         setTimeout(() => {
+        //             resolve("3. run the third time");
+        //         }, 3000);
+        //     });
+        // }).then((data) => {
+        //     console.log(data); // 3. run the third time
+        //     return new Promise(function (resolve, reject) {
+        //         setTimeout(() => {
+        //             resolve("4. run the 4th time");
+        //         }, 3000);
+        //     });
+        // }).then((data) => {
+        //     console.log(data); //4. run the 4th time
+        // })
+        // kq
+        //
+        // 1. run the first time
+        // 2. run the second time
+        // 3. run the third time
+        // 4. run the 4th time
+        // promise hell => async await
+
+        function makeTimer(timer = 1000) {
+            let mkPro = new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    resolve(timer);
+                }, 2000);
+            })
+            return mkPro;
+        }
+        const timer1 = makeTimer(1000);
+        const timer2 = makeTimer(2000);
+        const timer3 = makeTimer(3000);
+        // console.log(timer1.then((data)=>console.log(data)),
+        //             timer2.then((data)=>console.log(data)),
+        //             timer3.then((data)=>console.log(data)));
+
+        // trả về thành công khi thành công, thất bại khi 1 thằng thất bại
+        const timerTotal = Promise.all([timer1, timer2, timer3]).then((data) => console.log(data));
+        console.log(timerTotal); // 1000,2000,3000
+
+        // Promise.race xong nhanh nhất lấy luôn, nhanh nhất lấy luôn dù thất bại hay thành công
+        const timerRace = Promise.race([timer1, timer2, timer3]).then((data) => console.log(data));
+        console.log(timerRace); // 1000
+
+
+        function isFrontendDev(languages) {
+            return new Promise(function (resolve, reject) {
+                if (!languages.includes("html")) {
+                    reject("You are not Frontend developer");
+                }
+                setTimeout(() => {
+                    resolve("You are frontend developer");
+                }, 1000);
+            })
+        }
+
+        const dev1 = isFrontendDev(["html", "css"]);
+        const dev2 = isFrontendDev(["css"]);
+        // const devAll = Promise.all([devi, dev2]).then((data) => {
+        //     console.log(data);
+        // }); //You are not Frontend developer
+
+        const devRace = Promise.race([dev1, dev2]).then((data) => {
+            console.log("devRace", data);
+        }) //"You are not Frontend developer"
+
+        // try catch 
+
+        function isBackEndDev(language) {
+            if (language.includes("html")) {
+                throw new ("html")
+            }
+            return new Promise(function (resolve, reject) {
+                if (language.includes("css")) {
+                    reject("css day");
+                }
+                setTimeout(() => {
+                    resolve("ko phai html,css ");
+                }, 1000);
+            })
+        }
+        // try catch để bắt throw new(), còn .catch bắt reject
+        try {
+            isBackEndDev("css")
+                .then((data) => console.log(data))
+                .catch((err) => console.log(err));
+        }
+        catch (error) {
+            console.log("bat html catch tai day");
+        }
+
+    </script>
+</body>
+
+</html>

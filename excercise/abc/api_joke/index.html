@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .joke {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 50px;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+
+        .joke-heading {
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .joke-button {
+            border: 0;
+            outline: none;
+            display: block;
+            padding: 0 30px;
+            border-radius: 8px;
+            color: white;
+            background-color: #20e3b2;
+            position: relative;
+            height: 55px;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .loader {
+            width: 20px;
+            height: 20px;
+            border: 3px solid white;
+            border-left: 3px solid transparent;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: spin 1s infinite linear forwards;
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        .joke.is-loading .joke-button {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
+        .joke.is-loading .joke-button .loader {
+            display: block;
+        }
+
+        .joke.is-loading .joke-button span {
+            display: none;
+        }
+    </style>
+
+    <div class="joke">
+        <h1 class="joke-heading"></h1>
+        <button class="joke-button">
+            <div class="loader"></div>
+            <span>Get random joke</span>
+        </button>
+    </div>
+
+    <script>
+        const endpoint = "https://icanhazdadjoke.com";
+        async function getJoke() {
+            const response = await fetch(
+                endpoint,
+                {
+                    headers: {
+                        Accept: "application/json"
+                    }
+                }
+            );
+            const data = await response.json();
+            return data;
+        }
+        // in data
+        // const data = getJoke();
+        // console.log(data.then(x => console.log(x)));
+
+        async function handleClick() {
+            document.querySelector(".joke").classList.add("is-loading");
+            const data = await getJoke()
+                .then(data => {
+                    console.log(data);
+                    document.querySelector(".joke-heading").innerHTML = data.joke;
+                    document.querySelector(".joke").classList.remove("is-loading");
+                })
+                .catch(x => console.log(x));
+        }
+
+        const jokebutton = document.querySelector(".joke-button");
+
+        jokebutton.addEventListener("click", handleClick)
+    </script>
+</body>
+
+</html>

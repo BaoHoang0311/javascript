@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api</title>
+</head>
+
+<body>
+    <div id="textcontent"></div>
+    <script> 
+
+
+        // C1
+        const endpoint = "https://api.gitub.com/users";
+        // fetch
+        // function displayuser(user) {
+        //     const promise = fetch(`${endpoint}/${user}`);
+        //     promise.then(response => response.json())
+        //         .then(
+        //             data => {
+        //                 console.log(data);
+        //             }
+        //         )
+        //         .catch(x => console.log(x));
+        // }
+        // displayuser("evondev");
+        
+        // C2
+        async function displayuser(user) {
+            const promise = await fetch(`${endpoint}/${user}`);
+            const data =  await promise.json();
+            console.log(data);
+        }
+
+        function handleError(error){
+            console.log(error);
+        }
+        console.log(displayuser("evondevvv").catch(handleError));
+        
+    </script>
+</body>
+
+</html>

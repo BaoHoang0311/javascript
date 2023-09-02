@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async/Await</title>
+</head>
+
+<body>
+    <script>
+
+        function makeTimer(timer = 1000, str) {
+            let mkPro = new Promise(function (resolve, reject) {
+                setTimeout(() => {
+                    resolve(str);
+                }, timer);
+            })
+            return mkPro;
+        }
+        makeTimer(timer = 2000, "dasd").then(data => console.log(data));
+        // tuong duong thằng dưới
+        async function allTimer() {
+            const timer1 = await makeTimer(5000, "timer1");
+            console.log(timer1);
+        }
+        allTimer();
+
+        async function allTimerAll() {
+            const timer3 = makeTimer(5000, "timer3");
+            const timer4 = makeTimer(5000, "timer4");
+            const [a, b] = await Promise.all([timer3, timer4]);
+            console.log(a, b);
+        }
+        allTimerAll();
+
+        function isFrontEndDev(str) {
+            if (str.includes("css"))
+                throw new ("css");
+
+            return new Promise(function (resolve, reject) {
+                if (str.includes("html")) {
+                    reject("you r not fe devvv");
+                }
+
+                setTimeout(() => {
+                    resolve("u r fe devvv");
+                }, 5000);
+            })
+        }
+
+        // // dùng async await thì catch nó bắt reject thôi
+        async function Go2() {
+            try {
+                const dev1 = await isFrontEndDev("c#");
+                console.log("dev1", dev1); //dev1 u r fe devvv, b
+            }
+            catch (err) {
+                //  throw new + reject
+                console.log("here Go2()");
+            }
+        }
+        Go2();
+
+
+        new Promise(function (resolve, reject) {
+            setTimeout(() => {
+                reject("1. run the first time");
+            }, 3000);
+        }).then((data) => {
+            console.log(data);
+        }).catch((data) => {
+            console.log("esaease");
+        });
+        
+    </script>
+</body>
+
+</html>

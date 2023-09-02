@@ -40,28 +40,31 @@
         }
         Girl.prototype.CookPrototype_WitharrFunction = () => {
             return `girl: ${this.name} age: ${this.age} can cook`;
-        }
+        } 
+        // arrow function cái này chả hiểu this sẽ là gì,  
+        // console.log(girl.CookPrototype_WitharrFunction()); // girl:  age: undefined can cook
 
         Girl.prototype.CookPrototype_WithFunction = function () {
             return `girl: ${this.name} age: ${this.age} can cook`;
         }
-
+        // console.log(girl.CookPrototype_WithFunction()); // girl: bao age: 18 can cook
+        
         let girl = new Girl("bao", "18");
         console.log(girl.CookPrototype());
         console.log(girl.GetPrototype);
         girl.test();
-        console.log(girl.CookPrototype_WithFunction()); // 
+        console.log(girl.CookPrototype_WithFunction()); // girl: bao age: 18 can cook
         console.log(girl.CookPrototype_WitharrFunction()); // girl:  age: undefined can cook
 
         // 1. Bind
         const student = {
             firstName: "tran",
             lastName: "anh tuan",
-            fullName: function () {
+            fullName:  function ()  {
                 console.log(`${this.firstName} ${this.lastName}`);
-            }
+            },
         }
-
+        console.log(student.fullName1);
         const selector = document.querySelector.bind(document);
         const selectors = document.querySelectorAll.bind(document);
         function selector1(str) {
@@ -78,17 +81,14 @@
         const logErrToday1 = log.bind(null, "Error", "today");
         logErrToday1("day la tin nhan");
 
-        function ghilog() {
-            console.log.apply(console, arguments);
-        }
-        ghilog(1, 2);
 
-        function Animal(name, weight) {
+
+        function animal(name, weight) {
             this.name = name;
             this.weight = weight;
         }
         function Cat() {
-            Animal.call(this, 'cat', 50);
+            animal.call( this,'cat', 50);
         }
         Cat.prototype.say = function () {
             console.log(`I am ${this.name}, my weight is ${this.weight}`);
@@ -119,6 +119,11 @@
 
         let fnGoShopping = goShopping.bind(changtrai);
         fnGoShopping('shoes', 3, 100);
+
+        function ghilog() {
+            console.log.apply(console, arguments);
+        }
+        ghilog(1, 2);
     </script>
 </body>
 

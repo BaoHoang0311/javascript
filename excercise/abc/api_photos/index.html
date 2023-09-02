@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        /* picsum photos */
+        .images {
+            padding: 50px;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 25px;
+        }
+
+        .image-item {
+            height: 220px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: white;
+            border: 1px solid red;
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .load-more {
+            display: block;
+            width: max-content;
+            padding: 15px 30px;
+            border-radius: 4px;
+            color: white;
+            background-color: #6a5af9;
+            border: 0;
+            margin: 25px auto;
+        }
+
+
+        .is-loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: spin 1s infinite linear forwards;
+            width: 50px;
+            height: 50px;
+            border: 5px solid #6a5af9;
+            border-right: 5px solid transparent;
+            border-radius: 50%;
+        }
+
+        @keyframes spin {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+    </style>
+
+    <div class="image-loader"></div>
+    <div class="images">
+    </div>
+    <button class="load-more">Load more</button>
+    <script>
+        const imageList = document.querySelector(".images");
+        const loadmore = document.querySelector(".load-more");
+        const image_loader = document.querySelector(".image-loader");
+        loadmore.style.display = "none";
+        let page = 1;
+        const endpoint = `https://picsum.photos/v2/list?limit=8`
+        async function fetchimage(page) {
+            image_loader.classList.add("is-loading")
+            const images = await fetch(endpoint + `&page=${page}`);
+            const data = await images.json();
+            console.log(data);
+            if (data.length > 0 && Array.isArray(data)) {
+                data.forEach(x => {
+                    imageTemplate(x.download_url)
+                })
+            }
+            loadmore.style.display = "block";
+            image_loader.classList.remove("is-loading");
+            return data;
+        }
+        fetchimage();
+
+
+        function imageTemplate(url) {
+            const template = `<div class="image-item">
+                <img src="${url}" alt="" class="random-images">
+            </div>`
+            imageList.insertAdjacentHTML("beforeend", template);
+        }
+        async function handleloadmore() {
+            loadmore.style.display = "none";
+            page++;
+            await fetchimage(page);
+
+        }
+        loadmore.addEventListener("click", handleloadmore)
+    </script>
+</body>
+
+</html>
