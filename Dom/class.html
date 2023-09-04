@@ -41,7 +41,8 @@
 
         // log(1), log(1,2)
         const log = console.log.bind(console);
-        log(1, 2);
+        // const log = console.log.bind(this);
+        log(1,2);
 
         function ghilog() {
             console.log.apply(console, arguments)
@@ -100,11 +101,12 @@
         let item1 = new Item("bao");
         let item2 = new Item("hoang");
         console.log(Item.count);
+
         // super extend
         class Animal{
             constructor(legs, hands){
-                this.legs =legs;
-                this.hands =hands;
+                this.legs = legs;
+                this.hands = hands;
             }
             walking(){
                 console.log(`walking with ${this.legs} ${this.hands}`);
@@ -113,16 +115,20 @@
         class Bird extends Animal {
             constructor (legs,hands){
                 // khai báo class cha
-                super(legs);
+                super(legs,hands);
                 this.hands =hands;
             }
             flying(){
-                console.log(`bird has ${this.hands} hands`);
+                console.log(`bird has ${this.hands} hands ${this.legs}`);
             }
         }
+        
+        let animal = new Animal(6,7);
         let bird = new Bird(3,5);
+
         bird.walking();
         bird.flying();
+        animal.walking();
         console.log(bird.legs, bird.hands);
     </script>
 </body>

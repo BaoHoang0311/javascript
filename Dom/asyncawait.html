@@ -18,11 +18,19 @@
             })
             return mkPro;
         }
-        makeTimer(timer = 2000, "dasd").then(data => console.log(data));
+
+        let makeTimer1 = makeTimer(1000, "make Timer 1");
+        console.log(makeTimer1);
+        let makeTimer2 = makeTimer(2000, "make Timer 2");
+        let makeTimer3 = makeTimer(3000, "make Timer 3");
+        Promise.all([makeTimer1, makeTimer2, makeTimer3]).then(data => console.log(data));
+
         // tuong duong thằng dưới
         async function allTimer() {
             const timer1 = await makeTimer(5000, "timer1");
             console.log(timer1);
+            const timer2 = await makeTimer(5000, "timer2");
+            console.log(timer2);
         }
         allTimer();
 
@@ -49,15 +57,17 @@
             })
         }
 
-        // // dùng async await thì catch nó bắt reject thôi
+
+
         async function Go2() {
             try {
-                const dev1 = await isFrontEndDev("c#");
-                console.log("dev1", dev1); //dev1 u r fe devvv, b
+                const dev1 = await isFrontEndDev("html");
+                // resolve
+                console.log("dev1-----------", dev1);
             }
             catch (err) {
                 //  throw new + reject
-                console.log("here Go2()");
+                console.log("-------here Go2()");
             }
         }
         Go2();
@@ -72,7 +82,68 @@
         }).catch((data) => {
             console.log("esaease");
         });
-        
+
+        function isFrontEndDev(str) {
+            if (str.includes("css"))
+                throw new ("css");
+
+            return new Promise(function (resolve, reject) {
+                if (str.includes("html")) {
+                    reject("you r not fe devvv");
+                }
+
+                setTimeout(() => {
+                    resolve("u r fe devvv");
+                }, 5000);
+            })
+        }
+
+
+        function isFrontEndDev11(str) {
+            return new Promise(function (resolve, reject) {
+                if (str.includes("html")) {
+                    reject("you r not fe devvv");
+                }
+
+                setTimeout(() => {
+                    resolve("u r fe devvv");
+                }, 5000);
+            })
+        }
+        const dev1 = isFrontEndDev11(["html", "css"]);
+        const dev2 = isFrontEndDev11(["css"]);
+        Promise.all([dev1, dev2]).then(x => console.log(x)).catch(x => console.log(x));
+        Promise.allSettled([dev1, dev2]).then(x => console.log(x));
+        //[
+        //     {
+        //         "status": "rejected",
+        //         "reason": "you r not fe devvv"
+        //     },
+        //     {
+        //         "status": "fulfilled",
+        //         "value": "u r fe devvv"
+        //     }
+        // ]
+
+        function isFrontEndDev2(str) {
+            return new Promise(function (resolve, reject) {
+                if (str.includes("html")) {
+                    reject("you r not fe devvv");
+                }
+
+                setTimeout(() => {
+                    resolve("u r fe devvv");
+                }, 5000);
+            })
+        }
+
+        async function Go() {
+            const dev1 = await isFrontEndDev2("css");
+            return dev1;
+        }
+        Go().then(x => console.log("dasdas", x))
+            .catch(x => console.log("dasdasdsadasd", x));
+
     </script>
 </body>
 

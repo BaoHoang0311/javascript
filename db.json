@@ -1,7 +1,35 @@
 {
   "posts": [],
-  "courses":[],
-  "comment":[],
+  "courses": [
+    {
+      "image": "a",
+      "title": "b",
+      "author": "c",
+      "bestseller": true,
+      "buyamount": "5",
+      "ratting": "5",
+      "id": 1
+    },
+    {
+      "image": "a",
+      "title": "b",
+      "author": "c",
+      "bestseller": true,
+      "buyamount": "6",
+      "ratting": "7",
+      "id": 2
+    },
+    {
+      "image": "4",
+      "title": "4",
+      "author": "4",
+      "bestseller": true,
+      "buyamount": "4",
+      "ratting": "4",
+      "id": 3
+    }
+  ],
+  "comment": [],
   "profile": {
     "name": "typicode"
   }
